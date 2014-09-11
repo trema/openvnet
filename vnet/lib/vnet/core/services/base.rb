@@ -88,11 +88,20 @@ module Vnet::Core::Services
       ipv4_address = ipv4_address != IPV4_BROADCAST ? ipv4_address : nil
 
       interface = @dp_info.interface_manager.detect(id: @interface_id)
-      return unless interface
+
+      unless interface
+        debug log_format('Could not find interface', @interface_id)
+        return
+      end
 
       mac_info, ipv4_info = interface.get_ipv4_infos(any_md: message.match.metadata,
                                                      ipv4_address: ipv4_address).first
-      return unless ipv4_info
+      unless ipv4_info
+        debug log_format('Could not get ipv4 info', "metadata: #{message.match.metadata}"
+                                                    "ipv4_address: #{ipv4_address}")
+
+        return
+      end
 
       [mac_info, ipv4_info, @dp_info.network_manager.retrieve(id: ipv4_info[:network_id])]
     end
