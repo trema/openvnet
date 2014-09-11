@@ -94,12 +94,14 @@ module Vnet::Core::Services
         return
       end
 
-      mac_info, ipv4_info = interface.get_ipv4_infos(any_md: message.match.metadata,
-                                                     ipv4_address: ipv4_address).first
-      unless ipv4_info
-        debug log_format('Could not get ipv4 info', "metadata: #{message.match.metadata}"
-                                                    "ipv4_address: #{ipv4_address}")
+      ipv4_params = {
+        any_md: message.match.metadata,
+        ipv4_address: ipv4_address
+      }
+      mac_info, ipv4_info = interface.get_ipv4_infos(ipv4_params).first
 
+      unless ipv4_info
+        debug log_format('Could not get ipv4 info', ipv4_params)
         return
       end
 
