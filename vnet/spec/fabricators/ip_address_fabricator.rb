@@ -18,3 +18,6 @@ end
 Fabricator(:ip_address_2, class_name: Vnet::Models::IpAddress) do
   ipv4_address 2
 end
+
+Fabricator(:ip_address_any, class_name: Vnet::Models::IpAddress) do
+end
