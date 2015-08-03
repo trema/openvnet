@@ -93,7 +93,7 @@ translations:
     mode: static_address
     passthrough: true
 
-static_address_translations:
+translation_static_addresses:
 
   - uuid: tsa-1
     translation_uuid: tr-1
