@@ -95,8 +95,7 @@ translations:
 
 translation_static_addresses:
 
-  - uuid: tsa-1
-    translation_uuid: tr-1
+  - translation_uuid: tr-1
     route_link_uuid: rl-1
     ingress_ipv4_address: 172.16.90.100
     egress_ipv4_address: 10.101.0.10
