@@ -44,6 +44,8 @@ module Vnspec
             "lease_policies/#{v.delete(:lease_policy_uuid)}/ip_lease_containers/#{v.delete(:ip_lease_container_uuid)}"
           when :lease_policy_ip_retention_containers
             "lease_policies/#{v.delete(:lease_policy_uuid)}/ip_retention_containers/#{v.delete(:ip_retention_container_uuid)}"
+          when :translation_static_addresses
+            "translations/#{v.delete(:translation_uuid)}/static_address"
           else
             key.to_s
           end
