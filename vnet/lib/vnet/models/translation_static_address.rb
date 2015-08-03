@@ -5,6 +5,7 @@ module Vnet::Models
   # TODO: Refactor.
 
   class TranslationStaticAddress < Base
+    taggable 'tsa'
 
     many_to_one :translation
     # TODO: Association needed:
