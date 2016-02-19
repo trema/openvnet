@@ -88,10 +88,12 @@ module Vnet::NodeApi
       end
 
       def dispatch_created_item_events(model)
-        # TODO: Send has not just id.
+        # TODO: Send as not just id.
         dispatch_event(INTERFACE_CREATED_ITEM, id: model.id)
 
         filter = { interface_id: model.id }
+
+        # Need to dispatch event for InterfaceNetworkAssoc.
 
         # 0001_origin
         InterfacePort.dispatch_created_where(filter, model.created_at)

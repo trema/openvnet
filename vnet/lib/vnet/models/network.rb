@@ -27,6 +27,12 @@ module Vnet::Models
     #
     one_to_many :active_networks
 
+    #
+    #
+    #
+    one_to_many :interface_network_assocs
+    many_to_many :interfaces, join_table: :interface_network_assocs, :conditions => "interface_network_assocs.deleted_at is null"
+
     plugin :association_dependencies,
     # 0001_origin
     ip_addresses: :destroy,
@@ -36,7 +42,9 @@ module Vnet::Models
     # 0002_services
     lease_policy_base_networks: :destroy,
     # 0004_active_items
-    active_networks: :destroy
+    active_networks: :destroy,
+    # 
+    interface_network_assocs: :destroy
 
   end
 end

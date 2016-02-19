@@ -40,6 +40,12 @@ module Vnet::Models
     #
     one_to_many :filters
 
+    #
+    #
+    #
+    one_to_many :interface_network_assocs
+    many_to_many :networks, join_table: :interface_network_assocs, :conditions => "interface_network_assocs.deleted_at is null"
+
     plugin :association_dependencies,
     # 0001_origin
     active_interfaces: :destroy,
@@ -57,7 +63,9 @@ module Vnet::Models
     # 0002_services
     lease_policy_base_interfaces: :destroy,
     # 0006_filters
-    filters: :destroy
+    filters: :destroy,
+    # 
+    interface_network_assocs: :destroy
 
   end
 end
