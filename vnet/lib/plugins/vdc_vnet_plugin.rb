@@ -153,7 +153,7 @@ module Vnet::Plugins
     end
 
     def interface_params(vnet_params)
-      vnet_params[:mac_address] = ::Trema::Mac.new(vnet_params[:mac_address]).value if vnet_params[:mac_address]
+      vnet_params[:mac_address] = ::Pio::Mac.new(vnet_params[:mac_address]).to_s if vnet_params[:mac_address]
 
       interface = if vnet_params[:ipv4_address] && vnet_params[:mac_address]
                     Vnet::NodeApi::Interface.find_all {|i|
@@ -342,7 +342,7 @@ module Vnet::Plugins
               "#{x}:#{x}:#{x}:#{x}:#{x}:#{x}"
             end
 
-      ::Trema::Mac.new(mac).value
+      ::Pio::Mac.new(mac).to_s
     end
 
     def create_route_link(gw_a, gw_b)

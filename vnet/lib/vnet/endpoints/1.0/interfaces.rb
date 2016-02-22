@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-require 'trema/mac'
+require 'pio'
 
 Vnet::Endpoints::V10::VnetAPI.namespace '/interfaces' do
   def self.put_post_shared_params
