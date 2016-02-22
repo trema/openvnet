@@ -68,7 +68,7 @@ module Vnet::Endpoints::V10::Helpers
 
     PARSE_MAC = proc do |param|
       begin
-        Trema::Mac.new(param).value
+        Pio::Mac.new(param).to_s
       rescue ArgumentError
         raise(E::ArgumentError, "Could not parse MAC address: #{param}")
       end
