@@ -21,12 +21,12 @@ gem "sinatra-contrib"
 gem "sinatra-hashfix"
 gem "sinatra-browse", ">= 0.6.1" # 0.5 and 0.6 have a bug where missing parameters would be set to nil values
 gem "unicorn"
-gem "activesupport", '3.0.0' # Updating to 4.2.1 broke the unit tests.
+gem "activesupport", '~> 4.2'
 
 # trema and build requirement gems
 gem 'paper_house', '~>0.5.0'
 gem 'rant', '>= 0.5.9', :git => 'https://github.com/axsh/rant.git'
-gem 'trema', :git=>'https://github.com/axsh/trema.git', :branch=>'wakame-edge'
+gem 'trema', :git=>'https://github.com/trema/trema.git'
 
 group :development, :test do
   gem "rake"
